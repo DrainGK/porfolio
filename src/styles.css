@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Lora:ital,wght@1,400;1,500;1,600;1,700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    list-style: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.app{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(46, 46, 46);
+}
