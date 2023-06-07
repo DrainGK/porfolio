@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./navigation.css"
 
-const navData = ["abilities", "character", "customization", "Inventory", "Quests"]
+const navData = ["abilities", "character", "customization", "Inventory", "Missions", "Lore"]
 
 const Navigation = () => {
   const [activeIndex, setActiveIndex] = useState(null);

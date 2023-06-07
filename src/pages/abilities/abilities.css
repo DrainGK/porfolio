@@ -1,0 +1,50 @@
+.abilities{
+    display: flex;
+    flex-direction: column;
+}
+
+.abilities-container-top{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 40vh;
+}
+
+.abilities-container-bottom{
+    display: flex;
+}
+
+.abilities-container-bottom-left, .abilities-container-bottom-right{
+    width: 50vw;
+}
+
+.front-end, .others{
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 40%; */
+    max-width: 550px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.front-end > .bubble:nth-child(1) {
+    margin-left: 2rem;
+}
+.front-end > .bubble:nth-child(4) {
+    margin-left: 8rem;
+}
+.front-end > .bubble:nth-child(7) {
+    margin-left: 14rem;
+}
+
+.others > .bubble:nth-child(1) {
+    margin-left: 14rem;
+}
+.others > .bubble:nth-child(4) {
+    margin-left: 8rem;
+}
+.others > .bubble:nth-child(7) {
+    margin-left: 2rem;
+}

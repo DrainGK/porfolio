@@ -8,8 +8,15 @@
     font-family: 'Raleway', sans-serif;
 }
 
+body{
+    background-color: rgb(46, 46, 46);
+    overflow: hidden;
+}
+
 .app{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(46, 46, 46);
+    background-image: url(./assets/images/nebula_upscaled.jpg);
+    background-size: cover;
+    background-color: rgba(0, 0, 46, 0.411);
 }
