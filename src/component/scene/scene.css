@@ -1,0 +1,48 @@
+.scene{
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+}
+
+.scene::after{
+    position: absolute;
+    content: ' ';
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #8a8a8a, #ffffff) 1;
+    border-image-slice: 1;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 750px;
+    height: 750px;
+    opacity: 0.2;
+    z-index: -100;
+    animation: rotate 60s linear infinite, glowing 4s infinite;
+}
+.scene::before{
+    position: absolute;
+    content: ' ';
+    border: 1px solid white;
+    border-image: linear-gradient(to right, #8a8a8a, #ffffff) 1;
+    border-image-slice: 1;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    opacity: 0.2;
+    z-index: -100;
+    animation: rotate 60s linear infinite, glowing 4s infinite;
+}
+
+@keyframes rotate
+{
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

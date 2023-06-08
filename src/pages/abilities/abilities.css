@@ -1,6 +1,19 @@
 .abilities{
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.abilities::before{
+    position: absolute;
+    content: "abilities";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 300px;
+    z-index: -20;
+    opacity: 0.1;
+    color: black;
+    filter: blur(4px);
 }
 
 .abilities-container-top{
@@ -47,4 +60,10 @@
 }
 .others > .bubble:nth-child(7) {
     margin-left: 2rem;
+}
+
+.character-container{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
 }

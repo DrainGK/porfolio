@@ -26,6 +26,7 @@
     0 0 5px rgba(255, 255, 255, 0.699),
     0 0 8px rgba(255, 255, 255, 0.699),
     0 0 18px rgba(255, 255, 255, 0.699);
+    animation: textGlowing 2s infinite;
 }
 
 .skills-info-container > h2::after{
@@ -43,3 +44,15 @@
     line-height: 1.5rem;
     margin-bottom: 0.5rem;
 }
+
+@keyframes textGlowing {
+    0% {
+      text-shadow: 0 0 2px white; /* Initial glow color */
+    }
+    50% {
+      text-shadow: 0 0 10px white; /* Intermediate glow color */
+    }
+    100% {
+      text-shadow: 0 0 2px white; /* Final glow color */
+    }
+  }

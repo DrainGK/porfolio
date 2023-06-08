@@ -5,6 +5,7 @@ import Bubble from '../../component/bubble/Bubble';
 import SkillsInfo from '../../component/skillsInfo/SkillsInfo';
 
 import "./abilities.css"
+import Scene from '../../component/scene/Scene';
 
 const Abilities = () => {
     const [selectedBubble, setSelectedBubble] = useState(frontEndData[0]);
@@ -34,7 +35,9 @@ const Abilities = () => {
               />
             ))}
         </div>
-            <div className="character-container"></div>
+            <div className="character-container">
+              <Scene camera={{ position: [0, 2, 5], fov: 10}}/>
+            </div>
         <div className="abilities-container-bottom">
           <div className="abilities-container-bottom-left">
             <div className="front-end">
