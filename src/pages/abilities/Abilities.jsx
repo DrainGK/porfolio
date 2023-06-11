@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { frontEndData } from '../../data/frontEndData';
-import { otherSkillsData } from '../../data/otherSkillsData';
 import Bubble from '../../component/bubble/Bubble';
 import SkillsInfo from '../../component/skillsInfo/SkillsInfo';
 
