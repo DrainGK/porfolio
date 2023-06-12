@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera } from '@react-three/drei';
 import Map3D from '../../component/scene/Map3D'
 import "./map.css"
-import { motion } from 'framer-motion'
+import MapModal from '../../component/mapModal/MapModal';
 
-const Map = () => {
+
+const Map = ({ camera }) => {
+
+  const [open, setOpen] = useState(false);
+
+  const handleSphereClick = () => {
+    setOpen(true); // Display the modal when the sphere is clicked
+  };
+
   return (
     <div className='map'>
-      <motion.div className="map-rpg"
-      drag
-      dragConstraints={{ left: 0, right: 0, top: -300, bottom: 300 }}
-      dragElastic={0.2}>
-        <div className='red-dot'></div>
-        <div className='blue-dot'></div>
-        <div className='green-dot'></div>
-        <div className='pink-dot'></div>
-      </motion.div>
-      {/* <Map3D /> */}
+      <Canvas shadows camera={camera} fov={10}>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+            <Map3D onSphereClick={handleSphereClick}/>
+      </Canvas>
+      {open && <MapModal open={open} onClose={()=>setOpen(false)}>
+        <h2>zob</h2>
+        <h3>zoobi</h3>
+        <p>Zob zob zob zoubibi</p>
+        
+        </MapModal>}
     </div>
   )
 }
