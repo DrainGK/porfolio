@@ -35,10 +35,11 @@ const Map3D = ({ onSphereClick }) => {
   );
 
   const sphereRef = useRef();
-  const [isClicked, setIsClicked] = useState(mapData[0]);
+  const [isClicked, setIsClicked] = useState();
+  const [hover, setHover] = useState();
 
   const handleClick = (id) =>{
-    onSphereClick();
+    onSphereClick(id);
     const isClickedData = mapData.find((data) => data.id === id);
 
     if(isClickedData){
@@ -48,6 +49,10 @@ const Map3D = ({ onSphereClick }) => {
       console.log("click not ok", id);
     }
   }
+
+  const handleHover = (id) => {
+    setHover(id);
+  };
 
   return (
     
@@ -67,12 +72,17 @@ const Map3D = ({ onSphereClick }) => {
             rotation={[0, 0, 0]}
             scale={0.15}
             castShadow
-            onClick={handleClick(item.id)}
+            onClick={() => handleClick(item.id)}
+            onPointerOver={() => handleHover(item.id)}
+            onPointerOut={() => handleHover(null)}
             ref= {sphereRef}
             >
                 <ambientLight type='sunset'/>
                 <sphereGeometry args={[1, 16, 16]} />
-                <meshStandardMaterial color={isClicked ? "red" : "white"} transparent />
+                <meshStandardMaterial
+              color={hover === item.id ? "red" : "white"}
+              transparent
+            />
             </mesh>
             ))}
         </group>

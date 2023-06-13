@@ -4,14 +4,18 @@ import { PerspectiveCamera } from '@react-three/drei';
 import Map3D from '../../component/scene/Map3D'
 import "./map.css"
 import MapModal from '../../component/mapModal/MapModal';
+import { mapData } from '../../data/mapData';
+import DropDown from '../../component/drop-down/DropDown';
 
 
 const Map = ({ camera }) => {
 
   const [open, setOpen] = useState(false);
+  const [modalId, setModalId] = useState(null)
 
-  const handleSphereClick = () => {
+  const onSphereClick = (id) => {
     setOpen(true); // Display the modal when the sphere is clicked
+    setModalId(id)
   };
 
   return (
@@ -19,14 +23,21 @@ const Map = ({ camera }) => {
       <Canvas shadows camera={camera} fov={10}>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
-            <Map3D onSphereClick={handleSphereClick}/>
+            <Map3D onSphereClick={onSphereClick}/>
       </Canvas>
-      {open && <MapModal open={open} onClose={()=>setOpen(false)}>
-        <h2>zob</h2>
-        <h3>zoobi</h3>
-        <p>Zob zob zob zoubibi</p>
-        
-        </MapModal>}
+      {mapData.map((modal) => (
+        <>
+        {open && modal.id === modalId && (
+          <MapModal open={open} onClose={() => setOpen(false)}>
+            <h2>{modal.title}</h2>
+            <h3>{modal.sub}</h3>
+            {modal.content.map((item)=>(
+              <DropDown dropTitle={item.name} content={item}/>
+            ))}
+          </MapModal>
+        )}
+        </>
+      ))}
     </div>
   )
 }

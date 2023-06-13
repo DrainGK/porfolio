@@ -1,0 +1,40 @@
+.dropdown{
+    width: 50%;
+    
+}
+
+.dropdown-button{
+    width: 100%;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 2rem;
+    padding: 1rem;
+}
+
+.dropdown-button > h3 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.dropdown-details{
+    width: 100%;
+    padding: 1rem;
+    margin: 0 2rem;
+}
+
+.drop-details > h3{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.drop-details > h4{
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.drop-details > p{
+    overflow-y: scroll;
+}
