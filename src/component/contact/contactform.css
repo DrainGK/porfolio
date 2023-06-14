@@ -1,0 +1,54 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    border: 1px solid white;
+    background: transparent;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease;
+    border-radius: 5px;
+  }
+  .input-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    width: 100%;
+  }
+
+  .input-container > input{
+    width: 45%;
+  }
+  
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  textarea:hover,button[type="submit"]:hover {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  }
+
+  textarea{
+    height: 250px;
+    overflow-y: scroll;
+    resize: none;
+  }
+  
+  button[type="submit"] {
+    width: 20%;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+  }

@@ -35,7 +35,7 @@ const Abilities = () => {
             ))}
         </div>
             <div className="character-container">
-              <Scene camera={{ position: [0, 2, 5], fov: 10}}/>
+              <Scene x={0} camera={{ position: [0, 2, 5], fov: 10}}/>
             </div>
         <div className="abilities-container-bottom">
           <div className="abilities-container-bottom-left">
