@@ -1,6 +1,5 @@
 .dropdown{
     width: 50%;
-    
 }
 
 .dropdown-button{
@@ -35,6 +34,7 @@
     margin-bottom: 1rem;
 }
 
-.drop-details > p{
+.explenation{
     overflow-y: scroll;
+    height: 300px;
 }

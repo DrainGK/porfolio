@@ -1,5 +1,6 @@
 .enable{
     display: none;
+    transition: 1s ease-in-out;
 }
 
 .skills-info-container{

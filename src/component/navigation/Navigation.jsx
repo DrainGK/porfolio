@@ -78,24 +78,26 @@ const Navigation = () => {
   return (
     <nav>
       <audio ref={audioRef} src={navSound} />
-      <div className="nav-container">
-        <button onClick={handlePreviousClick}>L1</button>
-        <ul className="nav-list">
-          {navData.map((nav, index) => (
-            <li
-              key={index}
-              className={index === activeIndex ? "active" : ""}
-              onClick={() => handleItemClick(index)}
-            >
-              {nav.name}
-            </li>
-          ))}
-        </ul>
-        <button onClick={handleNextClick}>R1</button>
-      </div>
-      <div className='name-container'>
-        <h1>Guillaume Lopez |  </h1>
-        <h2>F-E DEV</h2>
+      <div className="nav">
+        <div className="nav-container">
+          <button onClick={handlePreviousClick}>L1</button>
+          <ul className="nav-list">
+            {navData.map((nav, index) => (
+              <li
+                key={index}
+                className={index === activeIndex ? "active" : ""}
+                onClick={() => handleItemClick(index)}
+              >
+                {nav.name}
+              </li>
+            ))}
+          </ul>
+          <button onClick={handleNextClick}>R1</button>
+        </div>
+        <div className='name-container'>
+          <h1>Guillaume Lopez |  </h1>
+          <h2>F-E DEV</h2>
+        </div>
       </div>
     </nav>
   );

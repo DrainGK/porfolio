@@ -22,7 +22,7 @@ const DropDown = ({ content, dropTitle }) => {
                 <div className="drop-details">
                     <h3>{content.title}</h3>
                     <h4>{content.date}</h4>
-                    <p>{content.exp}</p>
+                    <p className="explenation">{content.exp}</p>
                 </div>}
         </div>
         </div>

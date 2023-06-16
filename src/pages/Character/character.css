@@ -3,6 +3,17 @@
     height: 100vh;
     position: relative;
 }
+.character::before{
+    position: absolute;
+    content: "character";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 300px;
+    z-index: -20;
+    opacity: 0.1;
+    color: black;
+    filter: blur(4px);
+}
 
 .character::after{
     content: "";
@@ -36,8 +47,9 @@
     z-index: 20;
 }
 
-.character-infos > span {
+.info-container > span {
     z-index: 1000;
+    overflow-y: scroll;
 }
 
 .name-infos-container{
