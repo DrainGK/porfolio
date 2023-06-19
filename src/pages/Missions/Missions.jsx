@@ -45,7 +45,7 @@ const Missions = () => {
           {data.map((item) => (
             <>
             <div className={selectedMission && selectedMission.id === item.id ? 'mission-title-container active-bubble' : 'mission-title-container'} onClick={()=>handleMissionClick(item.id)}>
-              <h3>{item.title}</h3>
+              <h3>{item.name}</h3>
             </div>
             <div className={selectedMission && selectedMission.id === item.id ? 'mission-content-container' : 'enable'}>
               <h4>{item.date}</h4>

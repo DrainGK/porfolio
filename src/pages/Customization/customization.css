@@ -1,0 +1,10 @@
+.customization{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.button-container{
+    position: absolute;
+    bottom: 0;
+}
