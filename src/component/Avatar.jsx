@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from 'react'
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei'
 
 export function Avatar(props) {
-    const group = useRef();
+  const group = useRef();
   const { nodes, materials } = useGLTF('models/GuyLebon.glb')
 
   const { animations: standingAnimation } = useFBX("animations/Standing_1.fbx")

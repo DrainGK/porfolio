@@ -3,22 +3,7 @@ import { Avatar } from "../Avatar";
 import { AvatarMedieval } from "../AvatarMedieval";
 import { AvatarAngel } from "../AvatarAngel";
 import { useStoreAvatar } from "../../store/avatarStore";
-
-const avatarComponents = [
-  {
-    id: 1,
-    component: <Avatar />
-  },
-  {
-    id: 2,
-    component: <AvatarAngel />
-  },
-  {
-    id: 3,
-    component: <AvatarMedieval />
-  },
-
-]
+import { objectData } from "../../data/objectData";
 
 export const Experience = ({ x }) => {
   const selectedId = useStoreAvatar((state) => state.selectedId)
@@ -26,21 +11,15 @@ export const Experience = ({ x }) => {
   const renderComponent = () => {
     let selectedComponent = null;
   
-    avatarComponents.forEach((item) => {
+    objectData.forEach((item) => {
       if (item.id === selectedId) {
-        selectedComponent = item.component;
+        // selectedComponent = item.component;
   
         if (selectedId === 1) {
-          // Condition for id = 1
-          // Add your custom logic here
           selectedComponent = <Avatar position-x={x} />;
         } else if (selectedId === 2) {
-          // Condition for id = 2
-          // Add your custom logic here
           selectedComponent = <AvatarAngel position-x={x}/>;
         } else if (selectedId === 3) {
-          // Condition for id = 3
-          // Add your custom logic here
           selectedComponent = <AvatarMedieval position-x={x}/>;
         }
       }
@@ -57,8 +36,6 @@ export const Experience = ({ x }) => {
     <>
       <Environment preset="sunset" />
       <group position-y={-1.3} >
-        {/* <Avatar position-x={x}/> */}
-        {/* <AvatarMedieval position-x={x}/> */}
         {renderComponent()}
       </group>
       
