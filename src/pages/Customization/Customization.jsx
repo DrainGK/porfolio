@@ -4,59 +4,11 @@ import "./customization.css"
 import { useStoreAvatar } from '../../store/avatarStore';
 import Bubble from '../../component/bubble/Bubble';
 import SkillsInfo from '../../component/skillsInfo/SkillsInfo';
+import { avatarSelection } from '../../data/AvatarSelection';
 
 const questionMark = require("../../assets/images/question-mark.jpg")
 
-const avatarSelection = [
-  {
-    id: 1,
-    name: "Default",
-    content: "Default Skin",
-    image: "./image/skins/default.png"
-  },
-  {
-    id: 2,
-    name: "Cupidon",
-    content: "Cupidon Skin",
-    image: "./image/skins/cupidon.png"
-  },
-  {
-    id: 3,
-    name: "Medieval",
-    content: "Medieval Skin",
-    image: "./image/skins/Medieval.png"
-  },
-  {
-    id: 4,
-    name: "Locked",
-    content: "Continue the adventure to unlock the skin",
-    image: ""
-  },
-  {
-    id: 5,
-    name: "Locked",
-    content: "Continue the adventure to unlock the skin",
-    image: ""
-  },
-  {
-    id: 6,
-    name: "Locked",
-    content: "Continue the adventure to unlock the skin",
-    image: ""
-  },
-  {
-    id: 7,
-    name: "Locked",
-    content: "Continue the adventure to unlock the skin",
-    image: ""
-  },
-  {
-    id: 8,
-    name: "Locked",
-    content: "Continue the adventure to unlock the skin",
-    image: ""
-  },
-]
+
 
 const Customization = () => {
   const setId = useStoreAvatar(state => state.setId)

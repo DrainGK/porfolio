@@ -8,6 +8,7 @@ const Missions = () => {
   const [data, setData] = useState(missionsData);
   const [selectedMission, setSelectedMission] = useState(data[0]);
   const [missionType, setMissionType] = useState(false)
+  const [isActive, setIsActive] = useState(true)
 
   const handleMissionClick = (id) => {
     const selectedMissionData = data.find((data) => data.id === id);
@@ -21,6 +22,7 @@ const Missions = () => {
   }
 
   const handleType = () => {
+    setIsActive((isActive) => !isActive)
     if (missionType === false) {
       setData(designData);
     } else {
@@ -30,7 +32,6 @@ const Missions = () => {
     console.log(missionType);
   }
 
-  // className={isVisible ? "mission-image" : "enable" }
   return (
     <div className='missions'>
       <div className="missons-left">
@@ -53,10 +54,10 @@ const Missions = () => {
             </div>
             </>
           ))}
-      </div>
       <div className="button-container-mission">
-        <button onClick={handleType}>Web</button>
-        <button onClick={handleType}>Design</button>
+        <div className={isActive === true ? "mission-button mission-button-active" : "mission-button"} onClick={handleType}>Web</div>
+        <div className={isActive === true ? "mission-button" : "mission-button mission-button-active"} onClick={handleType}>Design</div>
+      </div>
       </div>
     </div>
   )

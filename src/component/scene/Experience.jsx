@@ -4,6 +4,9 @@ import { AvatarMedieval } from "../AvatarMedieval";
 import { AvatarAngel } from "../AvatarAngel";
 import { useStoreAvatar } from "../../store/avatarStore";
 import { objectData } from "../../data/objectData";
+import { KwassonGuy } from "../KwassonGuy";
+import { Altair } from "../Altair";
+import { OnigiriGuy } from "../OnigiriGuy";
 
 export const Experience = ({ x }) => {
   const selectedId = useStoreAvatar((state) => state.selectedId)
@@ -21,7 +24,11 @@ export const Experience = ({ x }) => {
           selectedComponent = <AvatarAngel position-x={x}/>;
         } else if (selectedId === 3) {
           selectedComponent = <AvatarMedieval position-x={x}/>;
-        }
+        } else if (selectedId === 4) {
+          selectedComponent = <KwassonGuy position-x={x}/>;
+        } else if (selectedId === 5) {
+          selectedComponent = <OnigiriGuy position-x={x}/>;
+        } 
       }
     });
   
