@@ -7,9 +7,11 @@ import { objectData } from "../../data/objectData";
 import { KwassonGuy } from "../KwassonGuy";
 import { Altair } from "../Altair";
 import { OnigiriGuy } from "../OnigiriGuy";
+import { useStoreScore } from "../../store/scoreStore";
 
 export const Experience = ({ x }) => {
   const selectedId = useStoreAvatar((state) => state.selectedId)
+  const currentScore = useStoreScore(state => state.currentScore)
 
   const renderComponent = () => {
     let selectedComponent = null;
@@ -22,11 +24,11 @@ export const Experience = ({ x }) => {
           selectedComponent = <Avatar position-x={x} />;
         } else if (selectedId === 2) {
           selectedComponent = <AvatarAngel position-x={x}/>;
-        } else if (selectedId === 3) {
+        } else if (selectedId === 3 && currentScore>=1) {
           selectedComponent = <AvatarMedieval position-x={x}/>;
-        } else if (selectedId === 4) {
+        } else if (selectedId === 4 && currentScore >=2) {
           selectedComponent = <KwassonGuy position-x={x}/>;
-        } else if (selectedId === 5) {
+        } else if (selectedId === 5 && currentScore >=10) {
           selectedComponent = <OnigiriGuy position-x={x}/>;
         } 
       }

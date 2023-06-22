@@ -5,13 +5,16 @@ import { useStoreAvatar } from '../../store/avatarStore';
 import Bubble from '../../component/bubble/Bubble';
 import SkillsInfo from '../../component/skillsInfo/SkillsInfo';
 import { avatarSelection } from '../../data/AvatarSelection';
+import { useStoreCroissant, useStoreScore } from '../../store/scoreStore';
 
 const questionMark = require("../../assets/images/question-mark.jpg")
 
 
 
+
 const Customization = () => {
   const setId = useStoreAvatar(state => state.setId)
+  const currentScore = useStoreScore(state => state.currentScore)
   const [selectedBubble, setSelectedBubble] = useState(avatarSelection);
 
   const handleClick = (id) => {
@@ -35,14 +38,16 @@ const Customization = () => {
       <div className="skins-infos-container">
         <div className="skins-info">
           {avatarSelection.map((data) => (
-                <h2 key={data.id} className={selectedBubble && selectedBubble.id === data.id ? 'skin-title' : 'enable'}>{data.name}</h2>
+                <h2 key={data.id} className='skin-title' style={{
+                  display: selectedBubble && selectedBubble.id === data.id ? 'block' : 'none'
+                }}>{currentScore < data.unlock ? "Find the gnom to unlock" : data.name}</h2>
               ))}
         </div>
         <div className="skins">
             {avatarSelection.map((data)=>(
               <Bubble 
               key={data.id}
-              image={data.image === "" ? questionMark : data.image}
+              image={data.image === "" || currentScore < data.unlock ? questionMark : data.image}
               title={data.title}
               onClick={() => handleClick(data.id)}
               className={selectedBubble && selectedBubble.id === data.id ? 'active-bubble bubble' : 'bubble'}/>

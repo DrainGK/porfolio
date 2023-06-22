@@ -2,12 +2,17 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import React, { useRef, useState } from 'react';
 import './scene.css';
-import { OrbitControls, PerspectiveCamera, Sphere } from '@react-three/drei';
+import { PerspectiveCamera, Text3D } from '@react-three/drei';
+import { Audio } from 'three';
 import { useDrag } from 'react-use-gesture';
-import { mapData } from "../../data/mapData"
+import { mapData } from "../../data/mapData";
+import gnomSound from "../../assets/sounds/gnome.mp3";
+import { PositionalAudio } from '@react-three/drei';
+import { useStoreScore } from '../../store/scoreStore';
 
-const Map3D = ({ onSphereClick }) => {
+const Map3D = ({ onSphereClick, score, setScore }) => {
   const texture = useLoader(THREE.TextureLoader, 'image/map_rpg.png');
+  const gnom = useLoader(THREE.TextureLoader, 'image/Noggin.webp');
   const ref = useRef();
   const [position, setPosition] = useState([0, 0, 0]);
   const { size, viewport, camera } = useThree();
@@ -37,6 +42,7 @@ const Map3D = ({ onSphereClick }) => {
   const sphereRef = useRef();
   const [isClicked, setIsClicked] = useState();
   const [hover, setHover] = useState();
+  
 
   const handleClick = (id) =>{
     onSphereClick(id);
@@ -54,14 +60,38 @@ const Map3D = ({ onSphereClick }) => {
     setHover(id);
   };
 
-  return (
-    
-      <PerspectiveCamera  position={[0, 0, -3]} onWheel={handleWheel}>
+  const randomPosition = [
+    Math.random() * 14 - 7,  // Random value between -7 and 7 for X-axis
+    Math.random() * 10 - 5,  // Random value between -5 and 5 for Y-axis
+    0                       // Z-axis position is set to 0
+  ];
 
+  const audioRef = useRef();
+  const [isSoundPlaying, setIsSoundPlaying] = useState(false);
+  const [gnomPosition, setGnomPosition] = useState(randomPosition)
+  const addScore = useStoreScore(state => state.addScore)
+  const currentScore = useStoreScore(state => state.currentScore)
+
+  const playSound = () => {
+      audioRef.current.play();
+
+      setGnomPosition(randomPosition);
+      addScore(currentScore+1)
+  }
+
+  return (
+
+      <PerspectiveCamera  position={[0, 0, -3]} onWheel={handleWheel}>
+        
         <group position={position} {...bind()} ref={ref}>
             <mesh >
                 <planeBufferGeometry args={[15, 10]} />
                 <meshBasicMaterial map={texture} />
+            </mesh>
+            <mesh position={gnomPosition} scale={0.15} onClick={playSound}>
+                <PositionalAudio loop = {false} ref={audioRef} url={gnomSound} />
+                <planeBufferGeometry args={[1, 1]} />
+                <meshBasicMaterial map={gnom} transparent opacity={1} />
             </mesh>
             
             {mapData.map((item) => (

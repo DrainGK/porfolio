@@ -33,7 +33,7 @@ const navData = [
 const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeIndex, setActiveIndex] = useState();
+  const [activeIndex, setActiveIndex] = useState(navData[0]);
 
   const audioRef = React.useRef(null);
 

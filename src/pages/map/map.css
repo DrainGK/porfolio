@@ -37,3 +37,18 @@
     z-index: -100;
     opacity: 0.1;
 }
+
+.score{
+    position: absolute;
+    top: 12%;
+
+    text-transform: uppercase;
+    font-weight: lighter;
+
+    z-index: 10;
+}
+
+.score > strong{
+    font-weight: 500;
+    font-size: 2rem;
+}
