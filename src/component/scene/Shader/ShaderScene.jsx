@@ -6,7 +6,7 @@ import Shader from './ShaderPhoto';
 const ShaderScene = () => {
     return (
         <div className="shader-container">
-            <Canvas camera={{position: [1.0, 1.5, 1.0], fov:30}}>
+            <Canvas camera={{position: [0, 0, 1.0], fov:60}}>
                 <pointLight position={[10,10,10]}/>
                 <Suspense>
                     <Shader />
