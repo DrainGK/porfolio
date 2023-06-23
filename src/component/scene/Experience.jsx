@@ -1,12 +1,11 @@
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Avatar } from "../Avatar";
-import { AvatarMedieval } from "../AvatarMedieval";
-import { AvatarAngel } from "../AvatarAngel";
+import { Avatar } from "../avatar/Avatar";
+import { AvatarMedieval } from "../avatar/AvatarMedieval";
+import { AvatarAngel } from "../avatar/AvatarAngel";
 import { useStoreAvatar } from "../../store/avatarStore";
 import { objectData } from "../../data/objectData";
-import { KwassonGuy } from "../KwassonGuy";
-import { Altair } from "../Altair";
-import { OnigiriGuy } from "../OnigiriGuy";
+import { KwassonGuy } from "../avatar/KwassonGuy";
+import { OnigiriGuy } from "../avatar/OnigiriGuy";
 import { useStoreScore } from "../../store/scoreStore";
 
 export const Experience = ({ x }) => {

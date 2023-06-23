@@ -3,6 +3,7 @@ import "./missions.css"
 import { missionsData } from '../../data/missionsData'
 import { designData } from '../../data/designData';
 import DropDown from '../../component/drop-down/DropDown';
+import ShaderScene from '../../component/scene/Shader/ShaderScene';
 
 const Missions = () => {
   const [data, setData] = useState(missionsData);
@@ -35,12 +36,13 @@ const Missions = () => {
   return (
     <div className='missions'>
       <div className="missons-left">
-        {data.map((img)=>(
+        {/* {data.map((img)=>(
           <div className='mission-container'>
             <img className={selectedMission && selectedMission.id === img.id ? '' : 'enable'} height={"450px"} width={"600px"} src={img.image} alt={img.name}
             />
           </div>
-        ))}
+        ))} */}
+        <ShaderScene />
       </div>
       <div className="missions-right">
           {data.map((item) => (
