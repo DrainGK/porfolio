@@ -15,7 +15,7 @@ const questionMark = require("../../assets/images/question-mark.jpg")
 const Customization = () => {
   const setId = useStoreAvatar(state => state.setId)
   const currentScore = useStoreScore(state => state.currentScore)
-  const [selectedBubble, setSelectedBubble] = useState(avatarSelection);
+  const [selectedBubble, setSelectedBubble] = useState(avatarSelection[0]);
 
   const handleClick = (id) => {
     setId(id)

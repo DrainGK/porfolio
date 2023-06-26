@@ -4,29 +4,16 @@ import glsl from "glslify"
 import { useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from "three"
 
-const fragmentShader = `
-precision mediump float;
 
-vec3 colorA = vec3(0.712,0.351,1.0);
-uniform float u_time;
-
-varying vec2 vUv;
-
-void main() {
-  gl_FragColor = vec4(colorA,1.0);
-}
-
-`
 const vertexShader = `
 precision mediump float;
 
 varying vec2 vUv;
+varying float vWave;
 
 uniform float u_time;
 
-uniform sampler2D u_texture;
-
-vec3 mod289(vec3 x) {
+  vec3 mod289(vec3 x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
   }
   
@@ -122,38 +109,57 @@ void main() {
 
     vUv = uv;
 
-  vec3 pos = position;
-  float noiseFreq = 3.5;
-  float noiseAmp = 0.15; 
-  vec3 noisePos = vec3(pos.x * noiseFreq + u_time, pos.y, pos.z);
-  pos.z += snoise(noisePos) * noiseAmp;
+    vec3 pos = position;
+    float noiseFreq = 1.5;
+    float noiseAmp = 0.15; 
+    vec3 noisePos = vec3(pos.x * noiseFreq + u_time, pos.y, pos.z);
+    pos.z += snoise(noisePos) * noiseAmp;
+    vWave = pos.z;
 
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
-  }
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
+    }
 `;
+
+const fragmentShader = `
+precision mediump float;
+
+vec3 colorA = vec3(0.712,0.351,1.0);
+uniform float u_time;
+varying vec2 vUv;
+varying float vWave;
+uniform sampler2D u_texture;
+
+void main() {
+
+    float wave = vWave * 0.05;
+    vec4 texture = texture2D(u_texture, vUv + wave);
+    gl_FragColor = texture;
+}
+
+`
 
 
 const ShaderPhoto = () => {
+    const image = useLoader(THREE.TextureLoader, 'image/map_rpg.png');
     const mesh = useRef()
     const uniforms = useMemo(
         () => ({
           u_time: {
-            value: 0.0,
+            value: null,
           },
-          u_texture:{ value: new THREE.Texture(),}
+          u_texture:{ value: image}
         }),
-    []
+    [image]
     );
     useFrame((state) => {
         const { clock } = state;
         mesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
     });
 
-    const image = useLoader(THREE.TextureLoader, 'image/map_rpg.png');
 
     return (
         <mesh ref={mesh} position={[0, 0, 0]}  scale={0.5}>
-        <planeGeometry args={[1, 1, 16, 16]} />
+        <planeGeometry args={[1, 1, 32, 32]} />
         <shaderMaterial
             fragmentShader={fragmentShader}
             vertexShader={vertexShader}
