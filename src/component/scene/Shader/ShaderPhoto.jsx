@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import { shaderMaterial } from '@react-three/drei';
 import glsl from "glslify"
 import { useFrame, useLoader } from '@react-three/fiber';
@@ -141,30 +141,39 @@ void main() {
 
 const ShaderPhoto = () => {
     const image = useLoader(THREE.TextureLoader, 'image/map_rpg.png');
-    const mesh = useRef()
+    const mesh = useRef();
+    const [hovered, setHovered] = useState(false);
     const uniforms = useMemo(
         () => ({
           u_time: {
             value: null,
           },
-          u_texture:{ value: image}
+          u_texture:{ value: image},
         }),
     [image]
     );
+    
     useFrame((state) => {
         const { clock } = state;
-        mesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
+        if (hovered) {
+          mesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
+        }
     });
 
 
     return (
-        <mesh ref={mesh} position={[0, 0, 0]}  scale={0.5}>
+        <mesh ref={mesh} position={[0, 0, 0]}  scale={0.5} onPointerEnter={() => setHovered(true)}
+        onPointerLeave={() => setHovered(false)}>
         <planeGeometry args={[1, 1, 32, 32]} />
+        {hovered ? (
         <shaderMaterial
-            fragmentShader={fragmentShader}
-            vertexShader={vertexShader}
-            uniforms={uniforms}
+          fragmentShader={fragmentShader}
+          vertexShader={vertexShader}
+          uniforms={uniforms}
         />
+      ) : (
+        <meshBasicMaterial map={image} />
+      )}
         </mesh>
     );
 };
